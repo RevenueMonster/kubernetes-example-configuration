@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: dev
+  name: ingress-routing
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: 'findev.revenuemonster.my'
+      http:
+        paths:
+          - path: /*
+            backend:
+              serviceName: rm-gateway
+              servicePort: 80
+  # tls:
+  #   - secretName: tls-cert
+  #     hosts:
+  #       - findev.revenuemonster.my

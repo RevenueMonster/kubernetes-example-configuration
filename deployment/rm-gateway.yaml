@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: dev
+  name: rm-gateway
+  labels:
+    app: rm-gateway
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: rm-gateway
+  template:
+    metadata:
+      labels:
+        app: rm-gateway
+    spec:
+      containers:
+        - name: rm-gateway
+          image: registry-intl-vpc.ap-southeast-3.aliyuncs.com/findev/kubernetes-example-gateway:latest
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: 50Mi
+              cpu: "25m"
+            requests:
+              memory: 25Mi
+              cpu: "20m"

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: dev
+  name: rm-gateway
+  labels:
+    app: rm-gateway
+spec:
+  ports:
+    - port: 80
+      targetPort: 5000
+      protocol: TCP
+      name: rm-gateway
+  type: NodePort
+  selector:
+    app: rm-gateway
