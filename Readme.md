@@ -1,11 +1,23 @@
-## Deployment Image
-`kubectl apply -f deployment/rm-service.yaml`
+## Create Namespace
+`kubectl apply -f namespace/`
 
-## Update Deployment Image
+## Create Deployment Image
+`kubectl apply -f deployment/`
+
+## Create Service
+`kubectl apply -f service/`
+
+## Create Ingress for Routing
+`kubectl apply -f ingress/`
+
+## Update New Docker Image for Deployment
 `kubectl set image deployment rm-service rm-service={docker_image_path} --namespace=dev`
 
-## Deployment Service
-`kubectl apply -f service/rm-service.yaml`
+## Create Config Map
+`kubectl apply -f config-map/`
 
-## Deployment Ingress
-`kubectl apply -f ingress/dev.yaml`
+## Create Secret
+`kubectl apply -f secret/`
+
+## Create CronJob
+`kubectl apply -f cronjob/`
