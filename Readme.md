@@ -21,3 +21,6 @@
 
 ## Create CronJob
 `kubectl apply -f cronjob/`
+
+## Kubectl Command Line CheatSheet
+`https://kubernetes.io/docs/reference/kubectl/cheatsheet/#creating-objects`
