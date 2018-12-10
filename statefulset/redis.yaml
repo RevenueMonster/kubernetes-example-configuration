@@ -1,0 +1,44 @@
+
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: dev
+  name: rm-redis
+spec:
+  ports:
+    - port: 6379
+      name: redis
+  clusterIP: None
+  selector:
+    app: rm-redis
+---
+apiVersion: apps/v1beta2
+kind: StatefulSet
+metadata:
+  namespace: dev
+  name: rm-redis
+spec:
+  selector:
+    matchLabels:
+      app: rm-redis
+  serviceName: rm-redis
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: rm-redis
+    spec:
+      containers:
+        - name: rm-redis
+          image: redis:3.2-alpine
+          resources:
+            limits:
+              cpu: "20m"
+              memory: "50Mi"
+            requests:
+              cpu: "10m"
+              memory: "25Mi"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 6379
+              name: rm-redis

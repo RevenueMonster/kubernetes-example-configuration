@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: rm-gateway
-          image: registry-intl-vpc.ap-southeast-3.aliyuncs.com/findev/kubernetes-example-gateway:latest
+          image: registry-intl.ap-southeast-3.aliyuncs.com/findev/kubernetes-example-gateway:v2.9
           imagePullPolicy: Always
           resources:
             limits:
